@@ -16,7 +16,7 @@
   <strong>Created:</strong> <%= @project.created_at.to_date.to_formatted_s(:long_ordinal) %><br />
   <strong>Deadline:</strong><br />
   <strong>Budget:</strong><br />
-  <strong>Rate:</strong> £<%= @project.rate %> Per Hour<br />
+  <strong>Rate:</strong> £<%= @project.project_rate %> Per Hour<br />
 </blockquote>
 
 <h3>Time Entries</h3>
@@ -32,7 +32,7 @@
     <tr>
       <td><%= time.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
       <td><%= time.hours %></td>
-      <td>£<%= @project.rate %></td>
+      <td>£<%= @project.project_rate %></td>
       <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
     </tr>
   <% end %>

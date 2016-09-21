@@ -11,6 +11,6 @@ class Project < ActiveRecord::Base
   end
 
   def project_total
-    rate * total_hours
+    project_rate * total_hours
   end
 end

@@ -1,7 +1,7 @@
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
   <%= f.input :client_id, as: :select, collection: @clients %>
-  <%= f.input :rate %>
+  <%= f.input :project_rate %>
   <%= f.input :complete, label: 'Project Complete?' %>
   <%= f.submit %>
 <% end %>
