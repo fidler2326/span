@@ -20,5 +20,11 @@ WickedPdf.config = {
   # layout: 'pdf.html',
   # Mime::Type.register "application/pdf", :pdf
   # :exe_path => '/usr/local/bin/wkhtmltopdf'
-  exe_path: '/Users/Adam/.rbenv/shims/wkhtmltopdf'
+  # exe_path: '/Users/Adam/.rbenv/shims/wkhtmltopdf'
+  if Rails.env.staging? || Rails.env.production?
+    exe_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+  else
+    exe_path = Rails.root.join('bin', '/Users/Adam/.rbenv/shims/wkhtmltopdf').to_s
+    # exe_path = '/usr/local/bin/wkhtmltopdf'
+  end
 }
