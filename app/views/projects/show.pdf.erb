@@ -1,0 +1,25 @@
+<%= wicked_pdf_stylesheet_link_tag "documents" %>
+
+<div class="document">
+  <%= @project.name %>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Date</th>
+      <th>Task</th>
+      <th>Hours</th>
+      <th>&nbsp;</th>
+    </tr>
+    <% @project.time_entries.each do |time| %>
+      <tr>
+        <td><%= time.created_at %></td>
+        <td></td>
+        <td><%= time.hours %></td>
+        <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="4"><strong>Hours Total:</strong> <%= @project.total_hours %> <strong>Total:</strong> £<%= @project.project_total %></td>
+    </tr>
+  </table>
+</div>

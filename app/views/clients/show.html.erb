@@ -1,0 +1,27 @@
+<div class="page-title">
+  <%= link_to 'Edit Client', edit_client_path(@client), class: 'btn btn-primary pull-right' %>
+  <h1><%= @client.name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <h3>Projects:</h3>
+    <table class="table table-striped">
+      <tr>
+        <th>Project name</th>
+      </tr>
+      <% @client.projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project_path(project) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <address>
+      <h3>Address:</h3>
+      <%= @client.address %>
+    </address>
+  </div>
+</div>

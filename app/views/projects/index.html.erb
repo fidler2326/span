@@ -1,0 +1,17 @@
+<div class="page-title">
+  <%= link_to 'New Project', new_project_path, class: 'btn btn-primary pull-right' %>
+  <h1>Projects</h1>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Project</th>
+    <th>Client</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project.name, project_path(project) %></td>
+      <td><%= link_to project.client.name, client_path(project.client) %></td>
+    </tr>
+  <% end %>
+</table>

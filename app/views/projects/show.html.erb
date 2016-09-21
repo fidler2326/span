@@ -1,0 +1,48 @@
+<div class="page-title">
+  <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-primary pull-right' %>
+  <h1>
+    <small><%= @project.client.name %></small>
+    <%= @project.name %>
+  </h1>
+</div>
+
+<% if @project.complete %>
+  <div class="pull-right">
+    <span class="complete">Completed</span>
+  </div>
+<% end %>
+
+<blockquote class="blockquote">
+  <strong>Created:</strong> <%= @project.created_at.to_date.to_formatted_s(:long_ordinal) %><br />
+  <strong>Deadline:</strong><br />
+  <strong>Budget:</strong><br />
+  <strong>Rate:</strong> £<%= @project.rate %> Per Hour<br />
+</blockquote>
+
+<h3>Time Entries</h3>
+
+<table class="table table-striped">
+  <tr>
+    <th>Date</th>
+    <th>Hours</th>
+    <th>Rate</th>
+    <th>Actions</th>
+  </tr>
+  <% @project.time_entries.each do |time| %>
+    <tr>
+      <td><%= time.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
+      <td><%= time.hours %></td>
+      <td>£<%= @project.rate %></td>
+      <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td><strong>Hours Total:</strong> <%= @project.total_hours %></td>
+    <td><strong>Total:</strong> £<%= @project.project_total %></td>
+    <td></td>
+  </tr>
+</table>
+
+<%= link_to 'Log Time', new_time_entry_path, class: 'btn btn-primary' %>
+<%= link_to 'Invoice', project_path(@project, :format => :pdf), class: 'btn btn-primary' %>
