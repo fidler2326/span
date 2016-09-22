@@ -1,0 +1,16 @@
+@import 'application';
+
+.page-title{
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  small{
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}

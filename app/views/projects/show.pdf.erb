@@ -1,25 +1,42 @@
 <%= wicked_pdf_stylesheet_link_tag "documents" %>
 
-<div class="document">
-  <%= @project.name %>
+<style>
 
-  <table class="table table-striped">
+</style>
+
+<div class="document">
+  <div class="page-title">
+    <h1>Invoice</h1>
+  </div>
+
+  <div class="pull-right" style="max-width: 200px;">
+    <strong>Project:</strong> <%= @project.name %><br />
+    <strong>Client:</strong> <%= @project.client.name %><br />
+    <strong>Address:</strong> <%= @project.client.address %>
+  </div>
+
+  <div class="pull-left">
+    <strong>Issue date:</strong> <%= Date.today %><br />
+    <span style="white-space: nowrap;"><strong>Due date:</strong> <%= Date.today %> (upon receipt)</span>
+  </div>
+
+  <table class="table table-striped" style="margin-top: 20px;">
     <tr>
       <th>Date</th>
-      <th>Task</th>
       <th>Hours</th>
-      <th>&nbsp;</th>
+      <th>Rate</th>
     </tr>
     <% @project.time_entries.each do |time| %>
       <tr>
-        <td><%= time.created_at %></td>
-        <td></td>
+        <td><%= time.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
         <td><%= time.hours %></td>
-        <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
+        <td>&pound;<%= @project.project_rate %></td>
       </tr>
     <% end %>
     <tr>
-      <td colspan="4"><strong>Hours Total:</strong> <%= @project.total_hours %> <strong>Total:</strong> £<%= @project.project_total %></td>
+      <td></td>
+      <td><strong>Hours Total:</strong> <%= @project.total_hours %></td>
+      <td><strong>Total:</strong> &pound;<%= @project.project_total %></td>
     </tr>
   </table>
 </div>

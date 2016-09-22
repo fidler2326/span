@@ -1,8 +1,13 @@
 class TimeEntriesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @time_entry = TimeEntry.new
+    @projects = Project.all
+  end
+
+  def edit
+    @time_entry = TimeEntry.find(params[:id])
     @projects = Project.all
   end
 
@@ -11,6 +16,20 @@ class TimeEntriesController < ApplicationController
 
     @time_entry.save
     redirect_to action: "index"
+  end
+
+  def update
+    @time_entry = TimeEntry.find(params[:id])
+
+    if @time_entry.update(time_entry_params)
+      redirect_to action: "index"
+    else
+      render 'edit'
+    end
+  end
+
+  def index
+    @time_entries = TimeEntry.all
   end
 
   private
