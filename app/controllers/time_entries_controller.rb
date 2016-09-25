@@ -28,6 +28,13 @@ class TimeEntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @time_entry = TimeEntry.find(params[:id])
+    @time_entry.destroy
+
+    redirect_to action: "index"
+  end
+
   def index
     @time_entries = TimeEntry.all
   end

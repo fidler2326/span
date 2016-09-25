@@ -33,7 +33,10 @@
       <td><%= time.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
       <td><%= time.hours %></td>
       <td>£<%= @project.project_rate %></td>
-      <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
+      <td>
+        <%= link_to 'Edit', edit_time_entry_path(time) %>
+        <%= link_to 'Delete', time_entry_path(time), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn danger' %>
+      </td>
     </tr>
   <% end %>
   <tr>
