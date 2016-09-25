@@ -14,8 +14,8 @@
 
 <blockquote class="blockquote">
   <strong>Created:</strong> <%= @project.created_at.to_date.to_formatted_s(:long_ordinal) %><br />
-  <strong>Deadline:</strong><br />
-  <strong>Budget:</strong><br />
+  <strong>Deadline:</strong> <%= @project.end_date.to_date.to_formatted_s(:long_ordinal) %> <span class="italic">(<%= (@project.end_date - Date.today).to_i %> days remaining)</span><br />
+  <strong>Budget:</strong> <%= @project.budget %> Days<br />
   <strong>Rate:</strong> £<%= @project.project_rate %> Per Hour<br />
 </blockquote>
 

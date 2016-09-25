@@ -7,11 +7,21 @@
   <tr>
     <th>Project</th>
     <th>Client</th>
+    <th>Budget</th>
+    <th>Spent</th>
+    <th>&nbsp;</th>
+    <th>Remaining</th>
+    <th>Costs</th>
   </tr>
   <% @projects.each do |project| %>
     <tr>
-      <td><%= link_to project.name, project_path(project) %></td>
-      <td><%= link_to project.client.name, client_path(project.client) %></td>
+      <td style="width: 25%;"><%= link_to project.name, project_path(project) %></td>
+      <td style="width: 20%;"><%= link_to project.client.name, client_path(project.client) %></td>
+      <td style="width: 8%;"><%= project.budget %> hours</td>
+      <td style="width: 8%;"><%= project.total_hours %> hours</td>
+      <td style="width: 14%;"><div class="progress"><span style="width: <%= project.remaining_percent %>%"></span></div></td>
+      <td style="width: 20%;"><%= project.budget - project.total_hours %> hours (<%= project.remaining_percent %>% remaining)</td>
+      <td style="width: 5%;">&pound;<%= project.project_total %></td>
     </tr>
   <% end %>
 </table>

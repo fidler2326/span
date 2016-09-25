@@ -13,4 +13,8 @@ class Project < ActiveRecord::Base
   def project_total
     project_rate * total_hours
   end
+
+  def remaining_percent
+    ((total_hours.to_f/budget.to_f) * 100).to_i
+  end
 end
