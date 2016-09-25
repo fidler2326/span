@@ -26,7 +26,9 @@ body{
 address{ text-align: right; }
 .italic{ font-style: italic; }
 .bold{ font-weight: bold; }
-p,blockquote,address{ font-size: 14px !important; }
+p,blockquote,address{ font-size: 14px !important; margin: 0; }
+p.large{ font-size: 24px !important; }
+p.muted{ color: #777; font-weight: bold; }
 
 .wrapper{
   display: flex;
@@ -56,11 +58,38 @@ p,blockquote,address{ font-size: 14px !important; }
 }
 
 .complete{
-  padding: 10px 25px;
+  display: inline-block;
+  margin: 5px 0 0 0;
+  padding: 8px 15px;
   background-color: #5cb85c;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+// Grid
+.grid{
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 20px 0;
+  .unit{
+    display: inline-block;
+    &.unit33{
+      width: 33.33%;
+    }
+  }
+}
+
+.box{
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  &:first-child{
+    border-right: 0;
+  }
+  &:last-child{
+    border-left: 0;
+  }
 }
 
 // Devise
@@ -97,12 +126,14 @@ label.boolean input{
 // Progress
 .progress{
   width: 100%;
-  height: 5px;
-  margin: 8px 0 0 0;
+  height: 8px;
+  margin: 7px 0 0 0;
   background-color: #eee;
+  border-radius: 50px;
+  overflow: hidden;
   span{
     float: left;
-    height: 5px;
+    height: 8px;
     background-color: #0275d8;
   }
 }
