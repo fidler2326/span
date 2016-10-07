@@ -1,6 +1,10 @@
 class Project < ActiveRecord::Base
   belongs_to :client
   has_many :time_entries
+  
+  has_many :tasks
+  accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
+
 
   def total_hours
     total_hours = 0

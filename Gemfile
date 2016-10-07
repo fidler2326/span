@@ -50,6 +50,8 @@ gem 'bootstrap', '~> 4.0.0.alpha4'
 
 gem 'devise'
 
+gem "cocoon"
+
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
