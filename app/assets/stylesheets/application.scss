@@ -14,6 +14,9 @@
 
 @import "bootstrap";
 
+$green: #05F26C;
+$purple: #340040;
+
 body{
   font-size: 14px;
   background-color: #F4F4F4;
@@ -135,15 +138,16 @@ label.boolean input{
   span{
     float: left;
     height: 8px;
-    background-color: #0275d8;
+    background-color: $green;
   }
 }
 
 .navbar{
-  background-color: #340040;
+  background-color: $purple;
+  border-bottom: 2px solid $green;
   border-radius: 0;
   ul li a{
-    color: #05F26C !important;
+    color: $green !important;
   }
 }
 
@@ -152,18 +156,18 @@ label.boolean input{
 .logo{
   display: flex;
   align-items: center;
-  color: #05F26C !important;
+  color: $green !important;
 }
 .icon-time{
   display: inline-block;
   width: 34px; height: 34px;
   margin: 0 8px 0 0;
-  border: 2px solid #05F26C;
+  border: 2px solid $green;
   border-radius: 100%;
   position: relative;
   span{
     width: 2px; height: 11px;
-    background-color: #05F26C;
+    background-color: $green;
     position: absolute;
     top: 4px; left: 50%;
     transform: translateX(-50%);
@@ -185,5 +189,5 @@ label.boolean input{
 // ------
 footer{
   margin: 0; padding: 20px;
-  background-color: #F2055C;
+  background-color: #eee;
 }

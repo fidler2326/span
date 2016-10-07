@@ -10,6 +10,10 @@ class Project < ActiveRecord::Base
     return total_hours
   end
 
+  def total_days
+    total_days = budget / 8
+  end
+
   def project_total
     project_rate * total_hours
   end
