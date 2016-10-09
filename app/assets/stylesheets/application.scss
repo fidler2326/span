@@ -75,9 +75,23 @@ p.muted{ color: #777; font-weight: bold; }
 .grid{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
   margin: 0 0 20px 0;
   .unit{
     display: inline-block;
+    &:nth-child(odd){
+      padding: 0 25px 0 0;
+    }
+    &:nth-child(even){
+      padding: 0 0 0 25px;
+    }
+    &.unit100{
+      width: 100%;
+    }
+    &.unit50{
+      width: 50%;
+    }
     &.unit33{
       width: 33.33%;
     }
@@ -120,7 +134,6 @@ p.muted{ color: #777; font-weight: bold; }
 // ---------------
 form{
   width: 100%;
-  max-width: 300px;
 }
 
 label.boolean input{
@@ -191,3 +204,5 @@ footer{
   margin: 0; padding: 20px;
   background-color: #eee;
 }
+
+@import 'tasks';

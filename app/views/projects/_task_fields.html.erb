@@ -1,8 +1,13 @@
 <div class="nested-fields">
   <div class="add-on">
     <%= f.simple_fields_for :tasks do |task| %>
-      <%= f.input :task_name %>
-      <%= link_to_remove_association "remove task", f %>
+      <div class="form-group">
+        <label>Task:</label>
+        <div class="input-group">
+          <%= f.text_field :task_name, class: 'form-control' %>
+          <div class="input-group-addon"><%= link_to_remove_association "X", f %></div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

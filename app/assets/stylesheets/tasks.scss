@@ -1,0 +1,12 @@
+.form-group{
+  input{
+    display: inline-block;
+    &.task-input{
+      max-width: 90%;
+    }
+  }
+}
+
+.remove_fields{
+  display: inline-block;
+}
