@@ -5,12 +5,22 @@
 <table class="table table-striped">
   <tr>
     <th>Project</th>
+    <th>Task</th>
     <th>Hours</th>
     <th>Actions</th>
   </tr>
   <% @time_entries.each do |time| %>
     <tr>
-      <td><%= time.project.name %></td>
+      <td>
+        <% if time.project %>
+          <%= time.project.name %>
+        <% end %>
+      </td>
+      <td>
+        <% if time.task %>
+          <%= time.task.task_name %>
+        <% end %>
+      </td>
       <td><%= time.hours %></td>
       <td><%= link_to 'Edit', edit_time_entry_path(time) %></td>
     </tr>

@@ -1,6 +1,6 @@
 <%= simple_form_for @project do |f| %>
   <div class="grid">
-    <div class="unit unit50">
+    <div class="unit unit50 left">
       <%= f.input :name, class: 'form-control' %>
       <%= f.input :client_id, as: :select, collection: @clients %>
       <div class="form-group">
@@ -23,7 +23,7 @@
       <%= f.input :complete, label: 'Project Complete?' %>
     </div>
 
-    <div class="unit unit50">
+    <div class="unit unit50 right">
       <div id="tasks">
         <%= f.simple_fields_for :tasks do |task| %>
           <%= render 'task_fields', f: task %>

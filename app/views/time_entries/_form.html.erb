@@ -1,5 +1,26 @@
 <%= simple_form_for @time_entry do |f| %>
   <%= f.input :hours %>
   <%= f.input :project_id, as: :select, collection: @projects %>
-  <%= f.submit %>
+  <%= f.input :task_id, as: :select, collection: [] %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+<script>
+$(document).ready(function(){
+  $('#time_entry_project_id').change(function(){
+    var selected = $(this).val();
+    console.log(selected);
+    $.ajax({
+      type:"GET",
+      url:"/projects/"+selected+"/tasks",
+      dataType:"json",
+      success:function(result){
+        console.log(result);
+        $.each(result, function(i, result) {
+            $('#time_entry_task_id').append($('<option>').text(result.task_name).attr('value', result.id));
+        });
+      }
+    });
+  });
+});
+</script>

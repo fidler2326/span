@@ -80,10 +80,10 @@ p.muted{ color: #777; font-weight: bold; }
   margin: 0 0 20px 0;
   .unit{
     display: inline-block;
-    &:nth-child(odd){
+    &.left{
       padding: 0 25px 0 0;
     }
-    &:nth-child(even){
+    &.right{
       padding: 0 0 0 25px;
     }
     &.unit100{
