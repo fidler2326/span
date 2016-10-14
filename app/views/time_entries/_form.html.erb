@@ -1,7 +1,7 @@
 <%= simple_form_for @time_entry do |f| %>
   <%= f.input :hours %>
   <%= f.input :project_id, as: :select, collection: @projects %>
-  <%= f.input :task_id, as: :select, collection: [] %>
+  <%= f.input :task_id, as: :select, collection: [], disabled: true %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
@@ -15,7 +15,7 @@ $(document).ready(function(){
       url:"/projects/"+selected+"/tasks",
       dataType:"json",
       success:function(result){
-        console.log(result);
+        $('#time_entry_task_id').attr('disabled',false);
         $.each(result, function(i, result) {
             $('#time_entry_task_id').append($('<option>').text(result.task_name).attr('value', result.id));
         });
