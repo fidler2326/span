@@ -36,7 +36,25 @@
 <h3>Tasks</h3>
 
 <table class="table table-striped">
-
+  <tr>
+    <th>Tasks</th>
+    <th>Total Hours</th>
+    <th>Cost</th>
+  </tr>
+  <% @time_entries.group_by(&:task).each do |time| %>
+    <tr>
+      <td>
+        <%= time.first.task_name %>
+      </td>
+      <td>
+        <% total_hours = time.second.map(&:hours).inject(0, &:+) %>
+        <%= total_hours %> hours
+      </td>
+      <td>
+        <%= @project.project_rate * total_hours %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <h3>All Time Entries</h3>

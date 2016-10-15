@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :client
   has_many :time_entries
   has_many :tasks
-  
+
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
 
@@ -28,6 +28,10 @@ class Project < ActiveRecord::Base
 
   def remaining_percent
     100 - ((total_hours.to_f/budget.to_f) * 100).to_i
+  end
+
+  def task_group
+    time_entries.group(:id)
   end
 
 end

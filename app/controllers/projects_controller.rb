@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    # @time_entries = Project.find(params[:id]).time_entries.joins(:task).group(:id)
+    @time_entries = Project.find(params[:id]).time_entries
     respond_to do |format|
       format.html
       format.pdf do
