@@ -155,6 +155,7 @@ label.boolean input{
   }
 }
 
+// Nav
 .navbar{
   background-color: $purple;
   border-bottom: 2px solid $green;
@@ -162,6 +163,16 @@ label.boolean input{
   ul li a{
     color: $green !important;
   }
+  .container{
+    display: flex;
+    padding: 0;
+  }
+}
+
+.navbar-nav{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 // Logo

@@ -37,7 +37,7 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Tasks</th>
+    <th>Task</th>
     <th>Total Hours</th>
     <th>Cost</th>
   </tr>
@@ -66,15 +66,11 @@
     <th>Rate</th>
     <th>Actions</th>
   </tr>
-  <% @project.time_entries.each do |time| %>
+  <% @time_entries.group_by(&:created_at).each do |time| %>
     <tr>
-      <td><%= time.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
-      <td><%= time.hours %></td>
-      <td>£<%= @project.project_rate %></td>
-      <td>
-        <%= link_to 'Edit', edit_time_entry_path(time) %>
-        <%= link_to 'Delete', time_entry_path(time), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn danger' %>
-      </td>
+      <% time.each do |i| %>
+        <%= i %>
+      <% end %>
     </tr>
   <% end %>
   <tr>
