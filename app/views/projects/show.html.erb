@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<h3>Tasks</h3>
+<h3>Tasks Overview</h3>
 
 <table class="table table-striped">
   <tr>
@@ -57,26 +57,20 @@
   <% end %>
 </table>
 
-<h3>All Time Entries</h3>
+<h3>Time Entries</h3>
 
 <table class="table table-striped">
-  <tr>
-    <th>Date</th>
-    <th>Hours</th>
-    <th>Rate</th>
-    <th>Actions</th>
-  </tr>
-  <% @time_entries.group_by(&:created_at).each do |time| %>
+  <% @time_entries.group_by(&:task).each do |time| %>
     <tr>
-      <% time.each do |i| %>
-        <%= i %>
-      <% end %>
+      <%= time.first.task_name %>
+      <table>
+        <% time.second.each do |i| %>
+          <tr>
+            <td>Date: <%= i.created_at %></td>
+            <td>Hours: <%= i.hours %></td>
+          </tr>
+        <% end %>
+      </table>
     </tr>
   <% end %>
-  <tr>
-    <td></td>
-    <td><strong>Hours Total:</strong> <%= @project.total_hours %></td>
-    <td><strong>Total:</strong> £<%= @project.project_total %></td>
-    <td></td>
-  </tr>
 </table>
