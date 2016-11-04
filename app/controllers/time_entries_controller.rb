@@ -15,14 +15,14 @@ class TimeEntriesController < ApplicationController
     @time_entry = TimeEntry.new(time_entry_params)
 
     @time_entry.save
-    redirect_to action: "index"
+    redirect_to controller: 'projects'
   end
 
   def update
     @time_entry = TimeEntry.find(params[:id])
 
     if @time_entry.update(time_entry_params)
-      redirect_to action: "index"
+      redirect_to controller: 'projects'
     else
       render 'edit'
     end

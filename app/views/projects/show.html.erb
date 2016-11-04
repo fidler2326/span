@@ -68,6 +68,7 @@
           <tr>
             <td>Date: <%= i.created_at %></td>
             <td>Hours: <%= i.hours %></td>
+            <td><%= link_to 'Edit', edit_time_entry_path(i) %> | <%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </table>
