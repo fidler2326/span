@@ -17,6 +17,7 @@
 $green: #05F26C;
 $purple: #340040;
 $pink: #F2055C;
+$error: #DA4453;
 
 body{
   font-size: 14px;
@@ -174,6 +175,26 @@ label.boolean input{
   margin-right: 10px;
 }
 
+// Form errors
+// -----------
+.help-block{
+  color: $error;
+  font-size: 12px;
+  font-style: italic;
+  position: relative;
+  top: -3px;
+}
+
+// Alerts
+// ------
+.alert{
+  &.alert-danger{
+    background-color: $error;
+    border: 0;
+    color: #fff;
+  }
+}
+
 // Progress
 .progress{
   width: 100%;
@@ -240,30 +261,6 @@ label.boolean input{
   }
   100% {
     transform: translateX(-50%) rotate(360deg);
-  }
-}
-
-// Alerts
-// ------
-.alert{
-  width: 100%;
-  margin: 0;
-  border-radius: 0;
-  position: absolute;
-  bottom: 0; left: 0;
-  text-align: center;
-  perspective: 500px;
-  transform-style: preserve-3d;
-  transform-origin: bottom;
-  animation: alerts 0.4s forwards ease-in;
-}
-
-@keyframes alerts {
-  0% {
-    transform: rotateX(-90deg);
-  }
-  100% {
-    transform: rotateX(0deg);
   }
 }
 
