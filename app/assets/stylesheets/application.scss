@@ -165,6 +165,9 @@ p.muted{ color: #777; font-weight: bold; }
 // ---------------
 form{
   width: 100%;
+  label{
+    abbr{ display: none; }
+  }
 }
 
 label.boolean input{
@@ -237,6 +240,30 @@ label.boolean input{
   }
   100% {
     transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+// Alerts
+// ------
+.alert{
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  position: absolute;
+  bottom: 0; left: 0;
+  text-align: center;
+  perspective: 500px;
+  transform-style: preserve-3d;
+  transform-origin: bottom;
+  animation: alerts 0.4s forwards ease-in;
+}
+
+@keyframes alerts {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
   }
 }
 

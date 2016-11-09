@@ -56,4 +56,6 @@ gem "cocoon"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'annotate'
+
 gem 'rails_12factor', group: :production

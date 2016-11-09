@@ -1,5 +1,8 @@
 <%= simple_form_for @client do |f| %>
+
+  <%= f.error_notification %>
+
   <%= f.input :name %>
   <%= f.input :address %>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

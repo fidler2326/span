@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id           :integer          not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  name         :string
+#  client_id    :integer
+#  complete     :boolean
+#  project_rate :integer
+#  budget       :integer
+#  end_date     :date
+#
+
 class Project < ActiveRecord::Base
   belongs_to :client
   has_many :time_entries
@@ -5,6 +20,7 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
+  # validates_presence_of :name, :client_id, :project_rate, :budget, :end_date
 
   def total_hours
     total_hours = 0
