@@ -274,6 +274,21 @@ label.boolean input{
   }
 }
 
+// Better tables
+// -------------
+table{
+  tr:nth-child(odd) td{
+    background-color: #eeeeee;
+  }
+  tr:nth-child(even) td{
+    background-color: #fafafa;
+  }
+  tr th{
+    background-color: $purple;
+    color: #fff;
+  }
+}
+
 // Footer
 // ------
 footer{
