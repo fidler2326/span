@@ -1,8 +1,8 @@
 <div class="page-title">
-  <div class="btn-group pull-right">
-    <%= link_to 'Log Time', new_time_entry_path, class: 'btn btn-primary' %>
-    <%= link_to 'Invoice', project_path(@project, :format => :pdf), class: 'btn btn-primary' %>
-    <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-primary' %>
+  <div class="pull-right">
+    <%= link_to 'Log Time', new_time_entry_path, class: 'btn btn-custom' %>
+    <%= link_to 'Invoice', project_path(@project, :format => :pdf), class: 'btn btn-custom' %>
+    <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-custom' %>
   </div>
   <h1>
     <small><%= @project.client.name %></small>
