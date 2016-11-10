@@ -264,6 +264,16 @@ label.boolean input{
   }
 }
 
+// Badges
+// ------
+.badge{
+  padding: 5px 15px;
+  border-radius: 25px;
+  &.green{
+    background-color: $green;
+  }
+}
+
 // Footer
 // ------
 footer{

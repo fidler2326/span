@@ -51,7 +51,7 @@
         <%= total_hours %> hours
       </td>
       <td>
-        <%= @project.project_rate * total_hours %>
+        <span class="badge green">£<%= @project.project_rate * total_hours %></span>
       </td>
     </tr>
   <% end %>

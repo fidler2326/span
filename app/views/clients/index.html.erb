@@ -14,7 +14,7 @@
         <%= link_to client.name, client_path(client) %>
       </td>
       <td align="right">
-        <%= client.project_count %>
+        <span class="badge green"><%= client.project_count %></span>
       </td>
     </tr>
   <% end %>
