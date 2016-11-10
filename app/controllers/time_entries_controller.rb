@@ -19,7 +19,7 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to time_entries_path, notice: 'Time entry was successfully created.' }
+        format.html { redirect_to projects_path, notice: 'Time entry was successfully created.' }
         format.json { render action: 'show', status: :created, location: @time_entry }
       else
         format.html { render action: 'new' }
