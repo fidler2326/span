@@ -14,8 +14,18 @@ class TimeEntriesController < ApplicationController
   def create
     @time_entry = TimeEntry.new(time_entry_params)
 
-    @time_entry.save
-    redirect_to controller: 'projects'
+    # @time_entry.save
+    # redirect_to controller: 'projects'
+
+    respond_to do |format|
+      if @time_entry.save
+        format.html { redirect_to time_entries_path, notice: 'Time entry was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @time_entry }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @time_entry.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

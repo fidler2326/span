@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :tasks, reject_if: :all_blank, allow_destroy: true
 
-  # validates_presence_of :name, :client_id, :project_rate, :budget, :end_date
+  validates_presence_of :name, :client_id, :project_rate, :budget, :end_date
 
   def total_hours
     total_hours = 0

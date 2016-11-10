@@ -30,8 +30,15 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    @project.save
-    redirect_to action: "index"
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to projects_path, notice: 'Project was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @project }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

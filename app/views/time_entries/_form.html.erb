@@ -1,4 +1,7 @@
 <%= simple_form_for @time_entry do |f| %>
+
+  <%= f.error_notification %>
+
   <%= f.input :hours %>
   <%= f.input :project_id, as: :select, collection: @projects %>
   <%= f.input :task_id, as: :select, collection: [], disabled: true %>
