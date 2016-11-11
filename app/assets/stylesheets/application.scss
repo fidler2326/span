@@ -17,7 +17,8 @@
 $green: #05F26C;
 $purple: #340040;
 $pink: #F2055C;
-$error: #DA4453;
+$blue: #07F2F2;
+$yellow: #EAF205;
 
 body{
   font-size: 14px;
@@ -178,7 +179,7 @@ label.boolean input{
 // Form errors
 // -----------
 .help-block{
-  color: $error;
+  color: $pink;
   font-size: 12px;
   font-style: italic;
   position: relative;
@@ -189,7 +190,7 @@ label.boolean input{
 // ------
 .alert{
   &.alert-danger{
-    background-color: $error;
+    background-color: $pink;
     border: 0;
     color: #fff;
   }
@@ -293,7 +294,7 @@ table{
 // --------------
 .btn-custom{
   padding: 10px 25px;
-  background-color: $purple;
+  background-color: $pink;
   outline: 0;
   border: 0;
   border-radius: 25px;
@@ -301,7 +302,7 @@ table{
   font-size: 14px;
   transition: 0.4s ease;
   &:hover{
-    background-color: lighten($purple, 10%);
+    background-color: lighten($pink, 10%);
     color: #fff;
   }
 }
