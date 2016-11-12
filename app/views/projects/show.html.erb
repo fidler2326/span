@@ -22,7 +22,7 @@
     <p class="muted">Budget</p>
     <strong>Total hours:</strong> <%= @project.total_hours %><br />
     <strong>Remaining hours:</strong> <%= @project.budget - @project.total_hours %> (<%= @project.remaining_percent %>% remaining)<br />
-    <div class="progress"><span style="width: <%= @project.total_percent %>%;"></span></div>
+    <div class="progress"><span class="green" style="width: <%= @project.total_percent %>%;"></span><span class="red" style="width: <%= @project.total_percent - 100 %>%;"></span></div>
   </div>
   <div class="unit unit33 box">
     <p class="muted">Cost</p>

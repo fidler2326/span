@@ -203,11 +203,22 @@ label.boolean input{
   margin: 7px 0 0 0;
   background-color: #eee;
   border-radius: 50px;
+  position: relative;
   overflow: hidden;
   span{
-    float: left;
     height: 8px;
+    max-width: 100%;
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+  }
+  .green{
     background-color: $green;
+    left: 0;
+  }
+  .red{
+    background-color: $pink;
+    right: 0;
   }
 }
 
