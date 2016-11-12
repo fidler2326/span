@@ -42,7 +42,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = TimeEntry.find(params[:id])
     @time_entry.destroy
 
-    redirect_to action: "index"
+    redirect_to controller: 'projects'
   end
 
   def index

@@ -333,6 +333,45 @@ table{
   }
 }
 
+// Actions menu
+// ------------
+ul.actions{
+  list-style: none;
+  margin: 0;
+  position: relative;
+  li{
+    &:hover{
+      ul{
+        display: block;
+      }
+    }
+  }
+  ul{
+    list-style: none;
+    display: none;
+    width: 140px;
+    margin: 0; padding: 5px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.05);
+    position: absolute;
+    z-index: 1;
+    li{
+      display: block;
+      width: 100%;
+      a{
+        display: block;
+        width: 100%;
+        padding: 3px 0;
+        border-bottom: 1px solid #eee;
+      }
+      &:last-child a{
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
 // Footer
 // ------
 footer{

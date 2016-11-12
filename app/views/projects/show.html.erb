@@ -29,7 +29,7 @@
     <strong>Remaining hours:</strong> <%= @project.budget - @project.total_hours %> (<%= @project.remaining_percent %>% remaining)<br />
     <div class="progress"><span class="green" style="width: <%= @project.total_percent %>%;"></span><span class="red" style="width: <%= @project.total_percent - 100 %>%;"></span></div>
   </div>
-  <div class="unit unit33 box middle green">
+  <div class="unit unit33 box middle">
     <p>Total Cost</p>
     <p class="xlarge">&pound;<%= @project.project_total %></p>
   </div>
@@ -73,7 +73,17 @@
             <td>Date: <%= i.created_at %></td>
             <td>Hours: <%= i.hours %></td>
             <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
-            <td><%= link_to 'Edit', edit_time_entry_path(i) %> | <%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <ul class="actions">
+                <li>
+                  <a href="">Actions</a>
+                  <ul>
+                    <li><%= link_to 'Edit Time Entry', edit_time_entry_path(i) %></li>
+                    <li><%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                  </ul>
+                </li>
+              </ul>
+            </td>
           </tr>
         <% end %>
       </table>
