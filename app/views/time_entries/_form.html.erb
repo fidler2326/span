@@ -2,7 +2,7 @@
 
   <%= f.error_notification %>
 
-  <%= f.input :hours %>
+  <%= f.input :hours, :step => 0.1 %>
   <%= f.input :project_id, as: :select, collection: @projects %>
   <%= f.input :task_id, as: :select, collection: [], disabled: true %>
   <%= f.submit class: 'btn btn-custom' %>
@@ -10,20 +10,27 @@
 
 <script>
 $(document).ready(function(){
+  var selected = $('#time_entry_project_id').val();
+  getTasks(selected);
   $('#time_entry_project_id').change(function(){
     var selected = $(this).val();
-    console.log(selected);
-    $.ajax({
-      type:"GET",
-      url:"/projects/"+selected+"/tasks",
-      dataType:"json",
-      success:function(result){
-        $('#time_entry_task_id').attr('disabled',false);
-        $.each(result, function(i, result) {
-            $('#time_entry_task_id').append($('<option>').text(result.task_name).attr('value', result.id));
-        });
-      }
-    });
+    getTasks(selected);
   });
 });
+
+function getTasks(selected) {
+  $.ajax({
+    type:"GET",
+    url:"/projects/"+selected+"/tasks",
+    dataType:"json",
+    success:function(result){
+      $('#time_entry_task_id').empty();
+      $('#time_entry_task_id').attr('disabled',false);
+      $.each(result, function(i, result) {
+        $('#time_entry_task_id').append($('<option>').text(result.task_name).attr('value', result.id));
+      });
+    }
+  });
+}
+
 </script>
