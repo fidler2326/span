@@ -46,6 +46,8 @@ group :development do
   gem 'spring'
 end
 
+gem "font-awesome-rails"
+
 gem 'simple_form'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 

@@ -1,14 +1,14 @@
 <div class="page-title">
   <div class="pull-right">
-    <%= link_to 'Log Time', new_time_entry_path, class: 'btn btn-custom' %>
-    <%= link_to 'Invoice', project_path(@project, :format => :pdf), class: 'btn btn-custom' %>
-    <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-custom' %>
+    <%= link_to '<i class="fa fa-clock-o" aria-hidden="true"></i> Log Time'.html_safe, new_time_entry_path, class: 'btn btn-custom' %>
+    <%= link_to '<i class="fa fa-credit-card" aria-hidden="true"></i> Invoice'.html_safe, project_path(@project, :format => :pdf), class: 'btn btn-custom' %>
+    <%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i> Edit Project'.html_safe, edit_project_path(@project), class: 'btn btn-custom' %>
   </div>
   <h1>
     <small>
       <%= @project.client.name %>
       <% if @project.complete %>
-        <span class="complete">Project complete</span>
+        <span class="complete"><i class="fa fa-check" aria-hidden="true"></i> Project complete</span>
       <% end %>
     </small>
     <%= @project.name %>
@@ -39,9 +39,9 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Task</th>
-    <th>Total Hours</th>
-    <th>Cost</th>
+    <th><i class="fa fa-tasks" aria-hidden="true"></i> Task</th>
+    <th><i class="fa fa-clock-o" aria-hidden="true"></i> Total Hours</th>
+    <th><i class="fa fa-dollar" aria-hidden="true"></i> Cost</th>
   </tr>
   <% @time_entries.group_by(&:task).each do |time| %>
     <tr>
@@ -61,32 +61,28 @@
 
 <h3>Time Entries</h3>
 
-<!-- <table class="table table-striped"> -->
-  <% @time_entries.group_by(&:task).each do |time| %>
-    <!-- <tr> -->
-      <table class="table table-striped">
-        <tr>
-          <th colspan="4"><%= time.first.task_name %></th>
-        </tr>
-        <% time.second.each do |i| %>
-          <tr>
-            <td>Date: <%= i.created_at %></td>
-            <td>Hours: <%= i.hours %></td>
-            <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
-            <td>
-              <ul class="actions">
-                <li>
-                  <a href="">Actions</a>
-                  <ul>
-                    <li><%= link_to 'Edit Time Entry', edit_time_entry_path(i) %></li>
-                    <li><%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                  </ul>
-                </li>
+<% @time_entries.group_by(&:task).each do |time| %>
+  <table class="table table-striped">
+    <tr>
+      <th colspan="4"><%= time.first.task_name %></th>
+    </tr>
+    <% time.second.each do |i| %>
+      <tr>
+        <td>Date: <%= i.created_at.to_formatted_s(:long_ordinal) %></td>
+        <td>Time: <%= i.hours %></td>
+        <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
+        <td>
+          <ul class="actions">
+            <li>
+              <a href="">Actions <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+              <ul>
+                <li><%= link_to 'Edit Time Entry', edit_time_entry_path(i) %></li>
+                <li><%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></li>
               </ul>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    <!-- </tr> -->
-  <% end %>
-<!-- </table> -->
+            </li>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
