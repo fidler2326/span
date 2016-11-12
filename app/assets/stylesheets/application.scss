@@ -13,6 +13,7 @@
  */
 
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 $green: #05F26C;
 $purple: #340040;
@@ -23,6 +24,7 @@ $yellow: #EAF205;
 body{
   font-size: 14px;
   background-color: #F4F4F4;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .pull-left{ float: left; }
