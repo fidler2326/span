@@ -28,6 +28,8 @@ body{
 .pull-left{ float: left; }
 .pull-right{ float: right; }
 
+.mb10{ margin-bottom: 10px; }
+
 // Fonts
 // -----
 address{ text-align: right; }
@@ -35,6 +37,7 @@ address{ text-align: right; }
 .bold{ font-weight: bold; }
 p,blockquote,address{ font-size: 14px !important; margin: 0; }
 p.large{ font-size: 24px !important; }
+p.xlarge{ font-size: 42px !important; }
 p.muted{ color: #777; font-weight: bold; }
 
 .wrapper{
@@ -67,9 +70,11 @@ p.muted{ color: #777; font-weight: bold; }
 .complete{
   display: inline-block;
   margin: 5px 0 0 0;
-  padding: 8px 15px;
-  background-color: #5cb85c;
-  color: #fff;
+  padding: 5px 15px;
+  background-color: $green;
+  border-radius: 25px;
+  color: #333;
+  font-size: 14px; 
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -113,6 +118,12 @@ p.muted{ color: #777; font-weight: bold; }
   }
   &:last-child{
     border-left: 0;
+  }
+  &.middle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }
 

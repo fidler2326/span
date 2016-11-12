@@ -5,7 +5,12 @@
     <%= link_to 'Edit Project', edit_project_path(@project), class: 'btn btn-custom' %>
   </div>
   <h1>
-    <small><%= @project.client.name %></small>
+    <small>
+      <%= @project.client.name %>
+      <% if @project.complete %>
+        <span class="complete">Project complete</span>
+      <% end %>
+    </small>
     <%= @project.name %>
   </h1>
 </div>
@@ -24,12 +29,9 @@
     <strong>Remaining hours:</strong> <%= @project.budget - @project.total_hours %> (<%= @project.remaining_percent %>% remaining)<br />
     <div class="progress"><span class="green" style="width: <%= @project.total_percent %>%;"></span><span class="red" style="width: <%= @project.total_percent - 100 %>%;"></span></div>
   </div>
-  <div class="unit unit33 box">
-    <p class="muted">Cost</p>
-    <p class="large">&pound;<%= @project.project_total %></p>
-    <% if @project.complete %>
-      <span class="complete">Project complete</span>
-    <% end %>
+  <div class="unit unit33 box middle green">
+    <p>Total Cost</p>
+    <p class="xlarge">&pound;<%= @project.project_total %></p>
   </div>
 </div>
 
@@ -59,19 +61,22 @@
 
 <h3>Time Entries</h3>
 
-<table class="table table-striped">
+<!-- <table class="table table-striped"> -->
   <% @time_entries.group_by(&:task).each do |time| %>
-    <tr>
-      <%= time.first.task_name %>
-      <table>
+    <!-- <tr> -->
+      <table class="table table-striped">
+        <tr>
+          <th colspan="4"><%= time.first.task_name %></th>
+        </tr>
         <% time.second.each do |i| %>
           <tr>
             <td>Date: <%= i.created_at %></td>
             <td>Hours: <%= i.hours %></td>
+            <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
             <td><%= link_to 'Edit', edit_time_entry_path(i) %> | <%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
       </table>
-    </tr>
+    <!-- </tr> -->
   <% end %>
-</table>
+<!-- </table> -->
