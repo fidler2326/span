@@ -204,13 +204,14 @@ label.boolean input{
 
 // Alerts
 // ------
-.alert{
-  &.alert-danger{
-    background-color: $pink;
-    border: 0;
-    color: #fff;
-  }
-}
+// .alert{
+//   display: block;
+//   &.alert-danger{
+//     background-color: $pink;
+//     border: 0;
+//     color: #fff;
+//   }
+// }
 
 // Progress
 .progress{
@@ -338,7 +339,7 @@ table{
 // --------------
 .alert{
   display: flex;
-  margin: 10px 0 0 0;
+  margin-top: 10px;
   padding: 10px;
   span{
     flex-grow: 1;

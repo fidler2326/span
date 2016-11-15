@@ -37,52 +37,60 @@
 
 <h3>Tasks Overview</h3>
 
-<table class="table table-striped">
-  <tr>
-    <th><i class="fa fa-tasks" aria-hidden="true"></i> Task</th>
-    <th><i class="fa fa-clock-o" aria-hidden="true"></i> Total Hours</th>
-    <th><i class="fa fa-dollar" aria-hidden="true"></i> Cost</th>
-  </tr>
-  <% @time_entries.group_by(&:task).each do |time| %>
-    <tr>
-      <td>
-        <%= time.first.task_name %>
-      </td>
-      <td>
-        <% total_hours = time.second.map(&:hours).inject(0, &:+) %>
-        <%= total_hours %> hours
-      </td>
-      <td>
-        <span class="badge green">£<%= @project.project_rate * total_hours %></span>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-<h3>Time Entries</h3>
-
-<% @time_entries.group_by(&:task).each do |time| %>
+<% if @time_entries.group_by(&:task).empty? %>
+  <div class="alert mb10">No tasks yet.</div>
+<% else %>
   <table class="table table-striped">
     <tr>
-      <th colspan="4"><%= time.first.task_name %></th>
+      <th><i class="fa fa-tasks" aria-hidden="true"></i> Task</th>
+      <th><i class="fa fa-clock-o" aria-hidden="true"></i> Total Hours</th>
+      <th><i class="fa fa-dollar" aria-hidden="true"></i> Cost</th>
     </tr>
-    <% time.second.each do |i| %>
+    <% @time_entries.group_by(&:task).each do |time| %>
       <tr>
-        <td>Date: <%= i.created_at.to_formatted_s(:long_ordinal) %></td>
-        <td>Time: <%= i.hours %></td>
-        <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
         <td>
-          <ul class="actions">
-            <li>
-              <a href="">Actions <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-              <ul>
-                <li><%= link_to 'Edit Time Entry', edit_time_entry_path(i) %></li>
-                <li><%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-              </ul>
-            </li>
-          </ul>
+          <%= time.first.task_name %>
+        </td>
+        <td>
+          <% total_hours = time.second.map(&:hours).inject(0, &:+) %>
+          <%= total_hours %> hours
+        </td>
+        <td>
+          <span class="badge green">£<%= @project.project_rate * total_hours %></span>
         </td>
       </tr>
     <% end %>
   </table>
+<% end %>
+
+<h3>Time Entries</h3>
+
+<% if @time_entries.group_by(&:task).empty? %>
+  <div class="alert">No time entries yet.</div>
+<% else %>
+  <% @time_entries.group_by(&:task).each do |time| %>
+    <table class="table table-striped">
+      <tr>
+        <th colspan="4"><%= time.first.task_name %></th>
+      </tr>
+      <% time.second.each do |i| %>
+        <tr>
+          <td>Date: <%= i.created_at.to_formatted_s(:long_ordinal) %></td>
+          <td>Time: <%= i.hours %></td>
+          <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
+          <td>
+            <ul class="actions">
+              <li>
+                <a href="">Actions <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                <ul>
+                  <li><%= link_to 'Edit Time Entry', edit_time_entry_path(i) %></li>
+                  <li><%= link_to 'Delete'.html_safe, time_entry_path(i), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 <% end %>
