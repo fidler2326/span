@@ -23,7 +23,7 @@
   <div class="unit unit25">
     <div class="card">
       <h6>Active projects</h6>
-      <h5><%= @projects.count %></h5>
+      <h5><%= @projects.count - @projects.where(complete: true).count %></h5>
     </div>
   </div>
   <div class="unit unit25">
