@@ -116,20 +116,32 @@
 
   <div class="clearfix"></div>
 
-  <% @time_entries.group_by(&:task).each do |time| %>
-    <table class="tasks">
+  <table class="tasks">
+    <tr>
+      <th>Task</th>
+      <th style="text-align: right;">Total Hours</th>
+      <th style="text-align: right;">Cost</th>
+    </tr>
+    <% @time_entries.group_by(&:task).each do |time| %>
       <tr>
-        <th colspan="4"><%= time.first.task_name %></th>
+        <td>
+          <%= time.first.task_name %>
+        </td>
+        <td style="text-align: right;">
+          <% total_hours = time.second.map(&:hours).inject(0, &:+) %>
+          <%= total_hours %> <%= "Hour".pluralize(total_hours) %>
+        </td>
+        <td style="text-align: right;">
+          <span class="badge green">£<%= @project.project_rate * total_hours %></span>
+        </td>
       </tr>
-      <% time.second.each do |i| %>
-        <tr>
-          <td>Date: <%= i.created_at.to_formatted_s(:long_ordinal) %></td>
-          <td>Time: <%= i.hours %></td>
-          <td>Cost: &pound;<%= @project.project_rate * i.hours %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
+    <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td class="large" style="text-align: right;">Total: &pound;<%= @project.project_total %></td>
+    </tr>
+  </table>
 
   <p style="margin-bottom: 10px; padding-top: 10px; border-top: 1px solid #aaa;"><strong>Notes:</strong></p>
   <p>Payment to:</p>

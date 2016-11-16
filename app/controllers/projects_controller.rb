@@ -2,8 +2,8 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def invoice
-    @project = Project.find(5)
-    @time_entries = Project.find(5).time_entries
+    @project = Project.find(3)
+    @time_entries = Project.find(3).time_entries
     render layout: false
   end
 
